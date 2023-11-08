@@ -1,7 +1,7 @@
 import pandas as pd
 import sqlite3
 
-df = pd.read_csv("Place.csv", encoding='cp949')
+df = pd.read_csv("Place.csv", encoding='utf-8-sig')
 
 database = "db.sqlite3"
 conn = sqlite3.connect(database)

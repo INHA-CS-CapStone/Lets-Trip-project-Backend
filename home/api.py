@@ -4,7 +4,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
-from .models import Place
+from .models import Place, UserChoice
 
 
 '''
@@ -39,6 +39,55 @@ A04: 쇼핑
 5. 쇼핑 
 '''
 
+def weighted_rating(x, m, C, user_types):
+    v = x['review_count']
+    R = x['rating']
+
+    type_weight = 0.05 if x['type'] in user_types else 0
+
+    return ((v / (v + m) * R) + (m / (m + v) * C)) * (1 + type_weight)
+
+def get_similar_places(name):
+    places = Place.objects.filter(name__in=name)
+
+    places_info = [
+        {
+            'name': place.name,
+            'rating': place.rating,
+            'type': place.type,
+            'keyword': ast.literal_eval(place.keyword),
+            'review_count': place.review_count,
+        }
+        for place in places
+    ]
+
+    user_choice = UserChoice.objects.get(id=1)
+    user_keywords = ' '.join([tag.replace('#', '') for tag in user_choice.tag_names])
+    
+    keywords = [user_keywords] + [' '.join(info['keyword']) for info in places_info]
+    
+    count_vec = CountVectorizer()
+    v = count_vec.fit_transform(keywords)
+    v.toarray()
+
+    sim = cosine_similarity(v, v)
+    sim_sorted_ind = sim.argsort()[:, ::-1][0, 1:9]
+    sim_sorted_ind = [i-1 for i in sim_sorted_ind]
+
+    similar_places_info = [places_info[i] for i in sim_sorted_ind]
+    df = pd.DataFrame(similar_places_info)
+
+    all_places = pd.DataFrame(list(Place.objects.values('rating', 'review_count')))
+
+    C = all_places['rating'].mean()
+    m = all_places['review_count'].quantile(0.6)
+
+    df['weighted_rating'] = df.apply(weighted_rating, args=(m, C, user_choice.tourism_types), axis=1)
+    df = df.sort_values(by='weighted_rating', ascending=False)
+
+    print(user_choice.tourism_types, user_choice.tag_names)
+    
+    return df
 
 def api(x, y):
     name = []
@@ -77,31 +126,5 @@ def api(x, y):
         else:
             del name[idx1]
 
-    places = Place.objects.filter(name__in=name)
-
-    places_info = [
-        {
-            'name': place.name,
-            'rating': place.rating,
-            'type': place.type,
-            'keyword': ast.literal_eval(place.keyword),
-            'review_count': place.review_count,
-        }
-        for place in places
-    ]
-
-    keywords = [' '.join(info['keyword']) for info in places_info]
-
-    count_vec = CountVectorizer()
-    v = count_vec.fit_transform(keywords)
-    v.toarray()
-
-    sim = cosine_similarity(v, v)
-    sim_sorted_ind = sim.argsort()[:, ::-1]
-    sim_sorted_ind = sim_sorted_ind[0][1:]
-    
-    similar_places_info = [places_info[i] for i in sim_sorted_ind]
-
-    df = pd.DataFrame(similar_places_info)
-
+    df = get_similar_places(name)
     return df

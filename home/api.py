@@ -25,6 +25,7 @@ A04: 쇼핑
 문화 시설 14
 레포츠 28
 쇼핑 38
+음식점 39
 
 관광지명 리스트:name - api 태그명 title
 관광 타입 리스트:typeId - api 태그명 contenttypeid

@@ -77,7 +77,7 @@ def get_similar_places(name):
 
     similar_places_info = [places_info[i] for i in sim_sorted_ind]
     df = pd.DataFrame(similar_places_info)
-
+    
     all_places = pd.DataFrame(list(Place.objects.values('rating', 'review_count')))
 
     C = all_places['rating'].mean()
@@ -85,8 +85,6 @@ def get_similar_places(name):
 
     df['weighted_rating'] = df.apply(weighted_rating, args=(m, C, user_choice.tourism_types), axis=1)
     df = df.sort_values(by='weighted_rating', ascending=False)
-
-    print(user_choice.tourism_types, user_choice.tag_names)
     
     return df
 

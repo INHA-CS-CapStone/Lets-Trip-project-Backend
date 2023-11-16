@@ -1,30 +1,16 @@
-asgiref @ file:///C:/Users/BUILDE~1/AppData/Local/Temp/abs_cchykh5sgr/croots/recipe/asgiref_1661287542702/work
-backports.zoneinfo @ file:///C:/Users/BUILDE~1/AppData/Local/Temp/abs_29zz4uumbw/croots/recipe/backports.zoneinfo_1661287541232/work
 beautifulsoup4==4.12.2
-Bottleneck @ file:///C:/Windows/Temp/abs_3198ca53-903d-42fd-87b4-03e6d03a8381yfwsuve8/croots/recipe/bottleneck_1657175565403/work
 bs4==0.0.1
 certifi==2023.7.22
 charset-normalizer==3.3.2
-Django @ file:///C:/Users/BUILDE~1/AppData/Local/Temp/abs_eeor5o9jj8/croots/recipe/django_1661292534510/work
 django-cors-headers==4.3.0
 django-filter==23.3
 djangorestframework==3.14.0
 idna==3.4
 joblib==1.3.2
-mkl-fft @ file:///C:/b/abs_19i1y8ykas/croot/mkl_fft_1695058226480/work
-mkl-random @ file:///C:/b/abs_edwkj1_o69/croot/mkl_random_1695059866750/work
 mkl-service==2.4.0
-numexpr @ file:///C:/b/abs_afm0oewmmt/croot/numexpr_1683221839116/work
-numpy @ file:///C:/Users/dev-admin/mkl/numpy_and_numpy_base_1682982345978/work
-pandas @ file:///C:/miniconda3/conda-bld/pandas_1692299636855/work
-python-dateutil @ file:///tmp/build/80754af9/python-dateutil_1626374649649/work
-pytz @ file:///C:/b/abs_19q3ljkez4/croot/pytz_1695131651401/work
 requests==2.31.0
 scikit-learn==1.3.2
 scipy==1.10.1
-six @ file:///tmp/build/80754af9/six_1644875935023/work
 soupsieve==2.5
-sqlparse @ file:///C:/b/abs_88361ub_qu/croot/sqlparse_1690904577514/work
 threadpoolctl==3.2.0
-tzdata @ file:///croot/python-tzdata_1690578112552/work
 urllib3==2.0.7

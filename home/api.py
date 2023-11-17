@@ -72,7 +72,7 @@ def get_similar_places(name):
     v.toarray()
 
     sim = cosine_similarity(v, v)
-    sim_sorted_ind = sim.argsort()[:, ::-1][0, 1:9]
+    sim_sorted_ind = sim.argsort()[:, ::-1][0, 1:11]
     sim_sorted_ind = [i-1 for i in sim_sorted_ind]
 
     similar_places_info = [places_info[i] for i in sim_sorted_ind]

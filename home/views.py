@@ -1,9 +1,11 @@
 from rest_framework import viewsets
 from rest_framework.response import Response
+from django.http import JsonResponse
 from .models import Place
 from .models import UserChoice
 from .serializers import PlaceSerializer
 from .api import api
+from .restaurant import restaurant
 
 class PlaceViewSet(viewsets.ViewSet):
     serializer_class = PlaceSerializer
@@ -30,3 +32,13 @@ class SelectionViewSet(viewsets.ViewSet):
             defaults={'tourism_types': data['tourismTypes'], 'tag_names': data['tagNames']},
         )
         return Response({'status': 'OK'})
+    
+def get_restaurants(request):
+    x = request.GET.get('x')
+    y = request.GET.get('y')
+
+    if x is None or y is None:
+        return JsonResponse({'error': 'Invalid parameters'}, status=400)
+
+    names = restaurant(x, y)
+    return JsonResponse({'names': names})

@@ -17,12 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from home.views import PlaceViewSet, SelectionViewSet
-
+from home.views import get_restaurants
 router = DefaultRouter()
 router.register(r'place', PlaceViewSet, basename='place')
 router.register(r'selection', SelectionViewSet, basename='selection')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('restaurant/', get_restaurants),
 ]

@@ -10,7 +10,7 @@ def restaurant(x, y):
         "serviceKey": "KWyscPcYr1noVXPOVDIQaqTO/jx61sgGZhTagP0jJQyIWQhZaWLY/wzdUpgKkZ+DB83gnI+Dd7OgXJm3NQHDIg==",
         "mapX": x,
         "mapY": y,
-        "radius": 10000,
+        "radius": 1000,
         "numOfRows": 1000,
         "pageNo": 1,
         "arrange": "E",

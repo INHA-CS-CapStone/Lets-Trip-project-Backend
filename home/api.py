@@ -44,7 +44,7 @@ def weighted_rating(x, m, C, user_types):
     v = x['review_count']
     R = x['rating']
 
-    type_weight = 0.05 if x['type'] in user_types else 0
+    type_weight = 0.1 if x['type'] in user_types else 0
 
     return ((v / (v + m) * R) + (m / (m + v) * C)) * (1 + type_weight)
 
@@ -99,7 +99,7 @@ def api(x, y):
         "serviceKey": "KWyscPcYr1noVXPOVDIQaqTO/jx61sgGZhTagP0jJQyIWQhZaWLY/wzdUpgKkZ+DB83gnI+Dd7OgXJm3NQHDIg==",
         "mapX": x,
         "mapY": y,
-        "radius": 10000,
+        "radius": 20000,
         "numOfRows": 1000,
         "pageNo": 1,
         "arrange": "E",

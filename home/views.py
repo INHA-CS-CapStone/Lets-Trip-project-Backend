@@ -17,7 +17,7 @@ class PlaceViewSet(viewsets.ViewSet):
 
         queryset = []
         for name in df['name']:
-            place = Place.objects.values('name', 'rating', 'review_count', 'type').get(name=name)
+            place = Place.objects.values('name', 'rating', 'type', 'x', 'y').get(name=name)
             queryset.append(place)
     
         serializer = PlaceSerializer(queryset, many=True)

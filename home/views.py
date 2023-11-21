@@ -40,5 +40,5 @@ def get_restaurants(request):
     if x is None or y is None:
         return JsonResponse({'error': 'Invalid parameters'}, status=400)
 
-    names = restaurant(x, y)
-    return JsonResponse({'names': names})
+    result = restaurant(x, y)
+    return JsonResponse({'result': result})

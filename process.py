@@ -10,7 +10,9 @@ dtype={
     "keyword": "CharField",
     "rating": "FloatField", 
     "type": "CharField",
-    "review_count": "IntegerField"
+    "review_count": "IntegerField",
+    "x" : "DecimalField",
+    "y" : "DecimalField",
 }
 df.to_sql(name='home_place', con=conn, if_exists='replace', dtype=dtype, index=True, index_label="id")
 conn.close()

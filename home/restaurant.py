@@ -8,7 +8,7 @@ def restaurant(x, y):
     paramDict = {
         "MobileOS": "ETC",
         "MobileApp": "AppTest",
-        "serviceKey": "KWyscPcYr1noVXPOVDIQaqTO/jx61sgGZhTagP0jJQyIWQhZaWLY/wzdUpgKkZ+DB83gnI+Dd7OgXJm3NQHDIg==",
+        "serviceKey": "fB/KHNHrGkg3g/FNfA9poFacZLKiqfND3XFgvv9OEE0NuRosKCs4cHG4iQQzKPByYAhgEUJXzjCSYsxMOuL01A==",
         "mapX": x,
         "mapY": y,
         "radius": 1000,

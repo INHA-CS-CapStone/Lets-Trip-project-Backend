@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 
 def restaurant(x, y):
     name = []
+    type = []
     url = "http://apis.data.go.kr/B551011/KorService1/locationBasedList1"
     paramDict = {
         "MobileOS": "ETC",
@@ -23,6 +24,22 @@ def restaurant(x, y):
     soup = BeautifulSoup(xml, 'html.parser')
     for tag in soup.find_all('title'):
         name.append(tag.text)
+    for tag in soup.find_all('cat3'):
+        if tag.text == 'A05020100':
+            type.append('한식')
+        elif tag.text == 'A05020200':
+            type.append('양식')
+        elif tag.text == 'A05020300':
+            type.append('일식')
+        elif tag.text == 'A05020400':
+            type.append('중식')
+        elif tag.text == 'A05020700':
+            type.append('이색음식')
+        elif tag.text == 'A05020900':
+            type.append('카페')
+        elif tag.text == 'A05021000':
+            type.append('클럽')
 
-    return name
+    result = list(zip(name, type))
 
+    return result

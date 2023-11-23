@@ -6,40 +6,6 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
 from .models import Place, UserChoice
 
-
-'''
-Encoding
-KWyscPcYr1noVXPOVDIQaqTO%2Fjx61sgGZhTagP0jJQyIWQhZaWLY%2FwzdUpgKkZ%2BDB83gnI%2BDd7OgXJm3NQHDIg%3D%3D
-
-Decoding
-KWyscPcYr1noVXPOVDIQaqTO/jx61sgGZhTagP0jJQyIWQhZaWLY/wzdUpgKkZ+DB83gnI+Dd7OgXJm3NQHDIg==
-
-<대분류> cat1
-A01: 자연
-A02: 인문
-A03: 레포츠
-A04: 쇼핑
-
-<contenttypeid>
-관광지 12
-문화 시설 14
-레포츠 28
-쇼핑 38
-음식점 39
-
-관광지명 리스트:name - api 태그명 title
-관광 타입 리스트:typeId - api 태그명 contenttypeid
-대분류 리스트:big - api 태그명 cat1
-중분류 리스트:middle - api 태그명 cat2
-소분류 리스트:small - api 태그명 cat3
-<typeId>
-1. 자연 
-2. 역사 
-3. 인문
-4. 레포츠 
-5. 쇼핑 
-'''
-
 def weighted_rating(x, m, C, user_types):
     v = x['review_count']
     R = x['rating']
@@ -96,7 +62,7 @@ def api(x, y):
     paramDict = {
         "MobileOS": "ETC",
         "MobileApp": "AppTest",
-        "serviceKey": "DuvlCYN39KDHMwJkCoCZwHTT5VxIjm1wuhMaCX8jb72BG9tayL764yc9fdn+cpautCwtnuiHrL/W02vYVL2Dhw==",
+        "serviceKey": "KWyscPcYr1noVXPOVDIQaqTO/jx61sgGZhTagP0jJQyIWQhZaWLY/wzdUpgKkZ+DB83gnI+Dd7OgXJm3NQHDIg==",
         "mapX": x,
         "mapY": y,
         "radius": 10000,

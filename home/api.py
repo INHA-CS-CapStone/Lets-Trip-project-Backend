@@ -81,7 +81,7 @@ def get_similar_places(name):
     all_places = pd.DataFrame(list(Place.objects.values('rating', 'review_count')))
 
     C = all_places['rating'].mean()
-    m = all_places['review_count'].quantile(0.6)
+    m = all_places[all_places['review_count'] >= 1]['review_count'].quantile(0.6)
 
     df['weighted_rating'] = df.apply(weighted_rating, args=(m, C, user_choice.tourism_types), axis=1)
     df = df.sort_values(by='weighted_rating', ascending=False)
@@ -96,10 +96,10 @@ def api(x, y):
     paramDict = {
         "MobileOS": "ETC",
         "MobileApp": "AppTest",
-        "serviceKey": "fB/KHNHrGkg3g/FNfA9poFacZLKiqfND3XFgvv9OEE0NuRosKCs4cHG4iQQzKPByYAhgEUJXzjCSYsxMOuL01A==",
+        "serviceKey": "DuvlCYN39KDHMwJkCoCZwHTT5VxIjm1wuhMaCX8jb72BG9tayL764yc9fdn+cpautCwtnuiHrL/W02vYVL2Dhw==",
         "mapX": x,
         "mapY": y,
-        "radius": 20000,
+        "radius": 10000,
         "numOfRows": 1000,
         "pageNo": 1,
         "arrange": "E",

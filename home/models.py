@@ -10,6 +10,7 @@ class Place(models.Model):
     review_count = models.IntegerField(blank=True, null=True)
     x = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True) 
     y = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)
+    content_id = models.IntegerField(blank=True, null=True)
 
 class UserChoice(models.Model):
     tourism_types = models.JSONField()

@@ -28,6 +28,10 @@ def get_similar_places(name):
         for place in places
     ]
 
+    for info in places_info:
+        if info['review_count'] >= 10:
+            print(info['name'])
+
     user_choice = UserChoice.objects.get(id=1)
     user_keywords = ' '.join([tag.replace('#', '') for tag in user_choice.tag_names])
     

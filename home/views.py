@@ -28,11 +28,11 @@ class PlaceViewSet(viewsets.ViewSet):
     def retrieve(self, request, pk=None):
         content_id = pk
         if content_id is not None:
-            content_id = [content_id] 
             data = detail(content_id)
             return Response(data) 
         else:
             return Response({'error': 'content_id is required'}, status=status.HTTP_400_BAD_REQUEST)
+
 
 class SelectionViewSet(viewsets.ViewSet):
     def create(self, request, *args, **kwargs):

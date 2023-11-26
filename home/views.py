@@ -15,7 +15,6 @@ class PlaceViewSet(viewsets.ViewSet):
         y = request.query_params.get('y')
         df = api(x, y)
 
-        print(df['name'].tolist())
         queryset = []
         for name in df['name']:
             place = Place.objects.values('name', 'rating', 'x', 'y', 'content_id', 'small_image').get(name=name)
